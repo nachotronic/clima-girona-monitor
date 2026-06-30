@@ -1,0 +1,81 @@
+name: Actualitza monitor climàtic Girona
+
+on:
+  schedule:
+    # 07:00 UTC cada dia. Ajustar segons quan sol estar llest ERA5-Land.
+    - cron: "0 7 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configura Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instal·la dependències
+        run: |
+          pip install --upgrade pip
+          pip install cdsapi xarray netCDF4 pandas pyarrow geopandas shapely
+
+      - name: Configura credencials CDS
+        run: |
+          echo "url: https://cds.climate.copernicus.eu/api" > ~/.cdsapirc
+          echo "key: ${{ secrets.CDS_API_KEY }}" >> ~/.cdsapirc
+
+      - name: Descarrega ERA5-Land recent
+        id: fetch
+        run: |
+          set +e
+          python scripts/02_fetch_recent_era5land.py
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+
+      - name: Atura el workflow si el dato encara no esta llest
+        if: steps.fetch.outputs.exit_code == '75'
+        run: |
+          echo "ERA5-Land encara no disponible avui. S'atura sense publicar ni trencar el lloc."
+          exit 0
+
+      - name: Falla explícitament si hi ha hagut un error real
+        if: steps.fetch.outputs.exit_code != '0' && steps.fetch.outputs.exit_code != '75'
+        run: |
+          echo "Error inesperat descarregant ERA5-Land (codi ${{ steps.fetch.outputs.exit_code }})."
+          exit 1
+
+      - name: Calcula anomalies
+        if: steps.fetch.outputs.exit_code == '0'
+        run: |
+          NC_FILE=$(ls data/raw/era5land_*.nc | tail -n 1)
+          python scripts/03_calculate_anomalies.py --recent-nc "$NC_FILE"
+
+      - name: Agrega a municipis
+        if: steps.fetch.outputs.exit_code == '0'
+        run: |
+          python scripts/04_aggregate_to_municipalities.py
+
+      - name: Genera outputs finals
+        if: steps.fetch.outputs.exit_code == '0'
+        run: |
+          DATE=$(date -u -d "yesterday" +%Y-%m-%d)
+          python scripts/05_build_outputs.py --date "$DATE"
+
+      - name: Neteja fitxers temporals
+        if: steps.fetch.outputs.exit_code == '0'
+        run: rm -rf data/raw data/anomalies_per_cell.parquet data/anomalies_per_municipi.parquet
+
+      - name: Commit i push si hi ha canvis
+        if: steps.fetch.outputs.exit_code == '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/latest_municipis.geojson data/latest_summary.json data/history/
+          git diff --cached --quiet || git commit -m "Actualitza dades climàtiques $(date -u -d 'yesterday' +%Y-%m-%d)"
+          git push
