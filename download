@@ -1,0 +1,7 @@
+data/raw/
+data/anomalies_per_cell.parquet
+data/anomalies_per_municipi.parquet
+__pycache__/
+*.pyc
+.DS_Store
+.cdsapirc

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor climàtic — Girona</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="app-header">
+    <div>
+      <h1>Monitor climàtic — Girona</h1>
+      <p id="header-subtitle" class="muted">Carregant dades…</p>
+    </div>
+    <div class="layer-toggle" role="group" aria-label="Selector de capa">
+      <button id="btn-municipis" class="layer-btn active">Municipis</button>
+      <button id="btn-malla" class="layer-btn">Malla climàtica</button>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div id="map"></div>
+
+    <aside id="panel" class="panel">
+      <p class="panel-placeholder">Passa el cursor o toca un municipi al mapa per veure'n el detall.</p>
+    </aside>
+  </main>
+
+  <div class="legend">
+    <span class="legend-label">-3°</span>
+    <div class="legend-gradient"></div>
+    <span class="legend-label">+6°</span>
+  </div>
+
+  <footer class="app-footer">
+    <p>Dades ERA5-Land agregades per municipi, ponderades per àrea d'intersecció. Anomalia respecte la normal climàtica del dia anterior. <a id="methodology-link" href="metodologia.html">Metodologia</a>.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
