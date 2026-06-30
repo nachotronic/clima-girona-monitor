@@ -1,0 +1,150 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "date": "2026-06-29",
+    "reference_period_main": "1991-2020",
+    "reference_period_alt": "1961-1990",
+    "generated_at": "2026-06-30T06:00:00Z",
+    "note": "Aquest fitxer conté dades d'exemple (placeholder) per desenvolupar el frontend abans de tenir el pipeline ERA5-Land complet en producció."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "municipi": "Girona",
+        "comarca": "Gironès",
+        "tmax_recent": 34.8,
+        "tmax_normal": 30.9,
+        "tmax_normal_1961_1990": 29.6,
+        "anomalia": 3.9,
+        "anomalia_1961_1990": 5.2,
+        "reference_period": "1991-2020",
+        "date": "2026-06-29",
+        "quality": "bona",
+        "quality_reasons": [],
+        "n_cells": 6,
+        "altitude_range": 120,
+        "weight_covered": 1.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.78,41.96],[2.86,41.97],[2.85,41.92],[2.77,41.91],[2.78,41.96]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "municipi": "Figueres",
+        "comarca": "Alt Empordà",
+        "tmax_recent": 33.1,
+        "tmax_normal": 29.8,
+        "tmax_normal_1961_1990": 28.5,
+        "anomalia": 3.3,
+        "anomalia_1961_1990": 4.6,
+        "reference_period": "1991-2020",
+        "date": "2026-06-29",
+        "quality": "bona",
+        "quality_reasons": [],
+        "n_cells": 5,
+        "altitude_range": 80,
+        "weight_covered": 1.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.94,42.30],[3.02,42.31],[3.01,42.25],[2.93,42.24],[2.94,42.30]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "municipi": "Camprodon",
+        "comarca": "Ripollès",
+        "tmax_recent": 28.4,
+        "tmax_normal": 27.0,
+        "tmax_normal_1961_1990": 25.9,
+        "anomalia": 1.4,
+        "anomalia_1961_1990": 2.5,
+        "reference_period": "1991-2020",
+        "date": "2026-06-29",
+        "quality": "baixa",
+        "quality_reasons": ["poques_celles", "alta_variabilitat_altitudinal"],
+        "n_cells": 2,
+        "altitude_range": 612,
+        "weight_covered": 0.97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.32,42.33],[2.40,42.34],[2.39,42.28],[2.31,42.27],[2.32,42.33]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "municipi": "Palafrugell",
+        "comarca": "Baix Empordà",
+        "tmax_recent": 30.2,
+        "tmax_normal": 28.1,
+        "tmax_normal_1961_1990": 27.0,
+        "anomalia": 2.1,
+        "anomalia_1961_1990": 3.2,
+        "reference_period": "1991-2020",
+        "date": "2026-06-29",
+        "quality": "moderada",
+        "quality_reasons": ["dades_incompletes"],
+        "n_cells": 4,
+        "altitude_range": 150,
+        "weight_covered": 0.81
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[3.13,41.93],[3.21,41.94],[3.20,41.88],[3.12,41.87],[3.13,41.93]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "municipi": "Ripoll",
+        "comarca": "Ripollès",
+        "tmax_recent": 27.0,
+        "tmax_normal": 27.5,
+        "tmax_normal_1961_1990": 26.4,
+        "anomalia": -0.5,
+        "anomalia_1961_1990": 0.6,
+        "reference_period": "1991-2020",
+        "date": "2026-06-29",
+        "quality": "moderada",
+        "quality_reasons": ["alta_variabilitat_altitudinal"],
+        "n_cells": 3,
+        "altitude_range": 480,
+        "weight_covered": 1.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.16,42.23],[2.24,42.24],[2.23,42.18],[2.15,42.17],[2.16,42.23]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "municipi": "Blanes",
+        "comarca": "Selva",
+        "tmax_recent": 29.5,
+        "tmax_normal": 28.9,
+        "tmax_normal_1961_1990": 27.8,
+        "anomalia": 0.6,
+        "anomalia_1961_1990": 1.7,
+        "reference_period": "1991-2020",
+        "date": "2026-06-29",
+        "quality": "bona",
+        "quality_reasons": [],
+        "n_cells": 4,
+        "altitude_range": 90,
+        "weight_covered": 1.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.76,41.69],[2.84,41.70],[2.83,41.64],[2.75,41.63],[2.76,41.69]]]
+      }
+    }
+  ]
+}

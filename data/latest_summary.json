@@ -1,0 +1,14 @@
+{
+  "date": "2026-06-29",
+  "reference_period_main": "1991-2020",
+  "reference_period_alt": "1961-1990",
+  "generated_at": "2026-06-30T06:00:00Z",
+  "n_municipis": 6,
+  "anomalia_mitjana": 1.8,
+  "anomalia_max": {"municipi": "Girona", "valor": 3.9},
+  "anomalia_min": {"municipi": "Ripoll", "valor": -0.5},
+  "n_quality_bona": 3,
+  "n_quality_moderada": 2,
+  "n_quality_baixa": 1,
+  "status": "ok"
+}
